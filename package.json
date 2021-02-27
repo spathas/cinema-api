@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
-    "debug": "ndb server.js"
+    "debug": "ndb server.js",
+    "data-imp": "node data/import-data.js --import",
+    "data-del": "node data/import-data.js --delete"
   },
   "repository": {
     "type": "git",
