@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const slugify = require('slugify');
 
 const titleSchema = new mongoose.Schema(
   {
@@ -9,7 +8,6 @@ const titleSchema = new mongoose.Schema(
       unique: true,
       trim: true
     },
-    slug: String,
     year: {
       type: Number,
       required: [true, 'A movie must have a release year']
