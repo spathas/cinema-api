@@ -3,7 +3,7 @@ const hallController = require('../controllers/hallController');
 const authController = require('../controllers/authController');
 
 //Route
-const router = express.Router({ mergeParams: true });
+const router = express.Router();
 
 router.use(authController.protect);
 

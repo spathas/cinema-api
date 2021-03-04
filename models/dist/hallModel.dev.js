@@ -1,6 +1,8 @@
-const mongoose = require('mongoose');
+"use strict";
 
-const hallSchema = new mongoose.Schema({
+var mongoose = require('mongoose');
+
+var hallSchema = new mongoose.Schema({
   number: {
     type: Number,
     unique: true,
@@ -12,10 +14,9 @@ const hallSchema = new mongoose.Schema({
   },
   typeOfHall: {
     type: String,
-    default: 'classic'
+    "default": 'classic'
   }
 });
-
-const Hall = mongoose.model('Hall', hallSchema);
-
+var Hall = mongoose.model('Hall', hallSchema);
 module.exports = Hall;
+//# sourceMappingURL=hallModel.dev.js.map
