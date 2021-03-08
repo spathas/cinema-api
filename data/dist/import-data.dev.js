@@ -12,6 +12,8 @@ var Hall = require('../models/hallModel');
 
 var User = require('../models/userModel');
 
+var Review = require('../models/reviewModel');
+
 dotenv.config({
   path: './config.env'
 });
@@ -19,14 +21,16 @@ var DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWOR
 mongoose.connect(DB, {
   useNewUrlParser: true,
   useCreateIndex: true,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useUnifiedTopology: true
 }).then(function () {
   return console.log('DB connection successful!');
 }); // READ JSON FILE
 
 var titles = JSON.parse(fs.readFileSync("".concat(__dirname, "/titles.json"), 'utf-8'));
 var halls = JSON.parse(fs.readFileSync("".concat(__dirname, "/halls.json"), 'utf-8'));
-var users = JSON.parse(fs.readFileSync("".concat(__dirname, "/users.json"), 'utf-8')); // IMPORT DATA INTO DB
+var users = JSON.parse(fs.readFileSync("".concat(__dirname, "/users.json"), 'utf-8'));
+var reviews = JSON.parse(fs.readFileSync("".concat(__dirname, "/reviews.json"), 'utf-8')); // IMPORT DATA INTO DB
 
 var importData = function importData() {
   return regeneratorRuntime.async(function importData$(_context) {
@@ -43,29 +47,33 @@ var importData = function importData() {
 
         case 5:
           _context.next = 7;
+          return regeneratorRuntime.awrap(Review.create(reviews));
+
+        case 7:
+          _context.next = 9;
           return regeneratorRuntime.awrap(User.create(users, {
             validateBeforeSave: false
           }));
 
-        case 7:
+        case 9:
           console.log('Data successfully loaded!');
-          _context.next = 13;
+          _context.next = 15;
           break;
 
-        case 10:
-          _context.prev = 10;
+        case 12:
+          _context.prev = 12;
           _context.t0 = _context["catch"](0);
           console.log(_context.t0);
 
-        case 13:
+        case 15:
           process.exit();
 
-        case 14:
+        case 16:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 10]]);
+  }, null, null, [[0, 12]]);
 }; // DELETE ALL DATA FROM DB
 
 
@@ -79,24 +87,36 @@ var deleteData = function deleteData() {
           return regeneratorRuntime.awrap(Title.deleteMany());
 
         case 3:
-          console.log('Data successfully deleted!');
+          _context2.next = 5;
+          return regeneratorRuntime.awrap(User.deleteMany());
+
+        case 5:
+          _context2.next = 7;
+          return regeneratorRuntime.awrap(Review.deleteMany());
+
+        case 7:
           _context2.next = 9;
+          return regeneratorRuntime.awrap(Hall.deleteMany());
+
+        case 9:
+          console.log('Data successfully deleted!');
+          _context2.next = 15;
           break;
 
-        case 6:
-          _context2.prev = 6;
+        case 12:
+          _context2.prev = 12;
           _context2.t0 = _context2["catch"](0);
           console.log(_context2.t0);
 
-        case 9:
+        case 15:
           process.exit();
 
-        case 10:
+        case 16:
         case "end":
           return _context2.stop();
       }
     }
-  }, null, null, [[0, 6]]);
+  }, null, null, [[0, 12]]);
 };
 
 if (process.argv[2] === '--import') {

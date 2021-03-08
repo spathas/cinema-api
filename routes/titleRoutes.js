@@ -1,8 +1,12 @@
 const express = require('express');
 const titleController = require('../controllers/titleController');
 const authController = require('../controllers/authController');
+// const reviewController = require('../controllers/reviewController');
+const reviewRouter = require('./reviewRoutes');
 
 const router = express.Router();
+
+router.use('/:titleId/reviews', reviewRouter);
 
 router
   .route('/')
@@ -26,5 +30,14 @@ router
     authController.restrictTo('admin'),
     titleController.deleteTitle
   );
+
+// router
+//   .route('/:titleId/reviews')
+//   .post(
+//     authController.protect,
+//     authController.restrictTo('user'),
+//     reviewController.setTourUserIds,
+//     reviewController.createReview
+//   );
 
 module.exports = router;

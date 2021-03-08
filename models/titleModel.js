@@ -64,6 +64,12 @@ const titleSchema = new mongoose.Schema(
   }
 );
 
+titleSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'title',
+  localField: '_id'
+});
+
 const Title = mongoose.model('Title', titleSchema);
 
 module.exports = Title;

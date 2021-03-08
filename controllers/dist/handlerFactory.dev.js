@@ -116,7 +116,10 @@ exports.getOne = function (Model, popOptions) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
-            query = Model.findById(req.params.id);
+            query = Model.findById(req.params.id).populate({
+              path: 'reviews',
+              select: 'name '
+            });
             if (popOptions) query = query.populate(popOptions);
             _context4.next = 4;
             return regeneratorRuntime.awrap(query);
@@ -155,10 +158,10 @@ exports.getAll = function (Model) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
-            // To allow for nested GET reviews on tour (hack)
+            // To allow for nested GET reviews on title (hack)
             filter = {};
-            if (req.params.tourId) filter = {
-              tour: req.params.tourId
+            if (req.params.titleId) filter = {
+              title: req.params.titleId
             };
             features = new APIFeatures(Model.find(filter), req.query).filter().sort().limitFields().paginate(); // const doc = await features.query.explain();
 
