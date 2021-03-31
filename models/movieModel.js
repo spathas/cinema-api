@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 // const User = require('./userModel');
 
-const titleSchema = new mongoose.Schema(
+const movieSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -64,12 +64,12 @@ const titleSchema = new mongoose.Schema(
   }
 );
 
-titleSchema.virtual('reviews', {
+movieSchema.virtual('reviews', {
   ref: 'Review',
-  foreignField: 'title',
+  foreignField: 'movie',
   localField: '_id'
 });
 
-const Title = mongoose.model('Title', titleSchema);
+const Movie = mongoose.model('Movie', movieSchema);
 
-module.exports = Title;
+module.exports = Movie;

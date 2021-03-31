@@ -1,7 +1,7 @@
 const fs = require('fs');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const Title = require('../models/titleModel');
+const Movie = require('../models/movieModel');
 const Hall = require('../models/hallModel');
 const User = require('../models/userModel');
 const Review = require('../models/reviewModel');
@@ -23,7 +23,7 @@ mongoose
   .then(() => console.log('DB connection successful!'));
 
 // READ JSON FILE
-const titles = JSON.parse(fs.readFileSync(`${__dirname}/titles.json`, 'utf-8'));
+const movies = JSON.parse(fs.readFileSync(`${__dirname}/movies.json`, 'utf-8'));
 const halls = JSON.parse(fs.readFileSync(`${__dirname}/halls.json`, 'utf-8'));
 const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
 const reviews = JSON.parse(
@@ -33,7 +33,7 @@ const reviews = JSON.parse(
 // IMPORT DATA INTO DB
 const importData = async () => {
   try {
-    await Title.create(titles);
+    await Movie.create(movies);
     await Hall.create(halls);
     await Review.create(reviews);
     await User.create(users, { validateBeforeSave: false });
@@ -47,10 +47,14 @@ const importData = async () => {
 // DELETE ALL DATA FROM DB
 const deleteData = async () => {
   try {
-    await Title.deleteMany();
+    await Movie.deleteMany();
     await User.deleteMany();
     await Review.deleteMany();
     await Hall.deleteMany();
+    // Review.collection.dropAllIndexes(function(err, results) {
+    //   const msg = !err ? 'Indexes dropped' : err;
+    //   console.log(msg);
+    // });
     console.log('Data successfully deleted!');
   } catch (err) {
     console.log(err);

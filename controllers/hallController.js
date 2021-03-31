@@ -1,5 +1,5 @@
 const Hall = require('../models/hallModel');
-const factory = require('./handlerFactory');
+const factory = require('./handleFactory');
 
 exports.getAllHalls = factory.getAll(Hall);
 exports.getHall = factory.getOne(Hall);

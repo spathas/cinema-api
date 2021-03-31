@@ -8,7 +8,7 @@ const xss = require('xss-clean');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
-const titleRouter = require('./routes/titleRoutes');
+const movieRouter = require('./routes/movieRoutes');
 const userRouter = require('./routes/userRoutes');
 const hallRouter = require('./routes/hallRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
@@ -54,7 +54,7 @@ app.use((req, res, next) => {
 });
 
 // 3) ROUTES
-app.use('/api/v1/titles', titleRouter);
+app.use('/api/v1/movies', movieRouter);
 app.use('/api/v1/halls', hallRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);

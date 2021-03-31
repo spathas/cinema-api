@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Title = require('./titleModel');
+const Movie = require('./movieModel');
 
 const reviewSchema = new mongoose.Schema(
   {
@@ -16,9 +16,9 @@ const reviewSchema = new mongoose.Schema(
       type: Date,
       default: Date.now
     },
-    title: {
+    movie: {
       type: mongoose.Schema.ObjectId,
-      ref: 'Title',
+      ref: 'Movie',
       required: [true, 'Review must belong to a movie title.']
     },
     user: {
@@ -33,7 +33,7 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
-reviewSchema.index({ title: 1, user: 1 }, { unique: true });
+reviewSchema.index({ movie: 1, user: 1 }, { unique: true });
 
 reviewSchema.pre(/^find/, function(next) {
   this.populate({
@@ -43,14 +43,14 @@ reviewSchema.pre(/^find/, function(next) {
   next();
 });
 
-reviewSchema.statics.calcAverageRatings = async function(titleId) {
+reviewSchema.statics.calcAverageRatings = async function(movieId) {
   const stats = await this.aggregate([
     {
-      $match: { title: titleId }
+      $match: { movie: movieId }
     },
     {
       $group: {
-        _id: '$title',
+        _id: '$movie',
         nRating: { $sum: 1 },
         avgRating: { $avg: '$rating' }
       }
@@ -58,23 +58,21 @@ reviewSchema.statics.calcAverageRatings = async function(titleId) {
   ]);
 
   if (stats.length > 0) {
-    await Title.findByIdAndUpdate(titleId, {
+    await Movie.findByIdAndUpdate(movieId, {
       ratingsQuantity: stats[0].nRating,
       ratingsAverage: stats[0].avgRating
     });
   } else {
-    await Title.findByIdAndUpdate(titleId, {
+    await Movie.findByIdAndUpdate(movieId, {
       ratingsQuantity: 0,
       ratingsAverage: 4.5
     });
   }
 };
 
-reviewSchema.index({ tour: 1, user: 1 }, { unique: true });
-
 reviewSchema.post('save', function() {
   // this points to current review
-  this.constructor.calcAverageRatings(this.title);
+  this.constructor.calcAverageRatings(this.movie);
 });
 
 // findByIdAndUpdate
@@ -87,7 +85,7 @@ reviewSchema.pre(/^findOneAnd/, async function(next) {
 
 reviewSchema.post(/^findOneAnd/, async function() {
   // await this.findOne(); does NOT work here, query has already executed.
-  await this.r.constructor.calcAverageRatings(this.r.title);
+  await this.r.constructor.calcAverageRatings(this.r.movie);
 });
 
 const Review = mongoose.model('Review', reviewSchema);

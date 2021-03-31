@@ -25,11 +25,13 @@ router
     reviewController.createReview
   )
   .patch(
-    authController.restrictTo('user', 'admin'),
+    authController.restrictTo('user'),
+    reviewController.checkCurrentUserUserId,
     reviewController.updateReview
   )
   .delete(
     authController.restrictTo('user', 'admin'),
+    reviewController.checkCurrentUserUserId,
     reviewController.deleteReview
   );
 

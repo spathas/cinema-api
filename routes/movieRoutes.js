@@ -1,38 +1,38 @@
 const express = require('express');
-const titleController = require('../controllers/titleController');
+const movieController = require('../controllers/movieController');
 const authController = require('../controllers/authController');
 // const reviewController = require('../controllers/reviewController');
 const reviewRouter = require('./reviewRoutes');
 
 const router = express.Router();
 
-router.use('/:titleId/reviews', reviewRouter);
+router.use('/:movieId/reviews', reviewRouter);
 
 router
   .route('/')
-  .get(titleController.getAllTitles)
+  .get(movieController.getAllMovies)
   .post(
     authController.protect,
     authController.restrictTo('admin'),
-    titleController.createTitle
+    movieController.createMovie
   );
 
 router
   .route('/:id')
-  .get(titleController.getTitle)
+  .get(movieController.getMovie)
   .patch(
     authController.protect,
     authController.restrictTo('admin'),
-    titleController.updateTitle
+    movieController.updateMovie
   )
   .delete(
     authController.protect,
     authController.restrictTo('admin'),
-    titleController.deleteTitle
+    movieController.deleteMovie
   );
 
 // router
-//   .route('/:titleId/reviews')
+//   .route('/:movieId/reviews')
 //   .post(
 //     authController.protect,
 //     authController.restrictTo('user'),

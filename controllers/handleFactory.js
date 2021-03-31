@@ -70,9 +70,9 @@ exports.getOne = (Model, popOptions) =>
 
 exports.getAll = Model =>
   catchAsync(async (req, res, next) => {
-    // To allow for nested GET reviews on title (hack)
+    // To allow for nested GET reviews on movie (hack)
     let filter = {};
-    if (req.params.titleId) filter = { title: req.params.titleId };
+    if (req.params.movieId) filter = { movie: req.params.movieId };
 
     const features = new APIFeatures(Model.find(filter), req.query)
       .filter()
