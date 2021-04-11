@@ -12,6 +12,7 @@ const movieRouter = require('./routes/movieRoutes');
 const userRouter = require('./routes/userRoutes');
 const hallRouter = require('./routes/hallRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
+const scheduleRouter = require('./routes/scheduleRoutes');
 
 const app = express();
 
@@ -24,7 +25,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-// Limit requests from same API
+// Limit requests from same IP
 const limiter = rateLimit({
   max: 100,
   windowMs: 60 * 60 * 1000,
@@ -55,6 +56,7 @@ app.use((req, res, next) => {
 
 // 3) ROUTES
 app.use('/api/v1/movies', movieRouter);
+app.use('/api/v1/schedules', scheduleRouter);
 app.use('/api/v1/halls', hallRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
