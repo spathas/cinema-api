@@ -26,15 +26,8 @@ router
   .patch(
     authController.protect,
     authController.restrictTo('admin'),
+    scheduleController.updateReqBodyForNestedObjs,
     scheduleController.updateSchedule
-  );
-
-router
-  .route('/:id/hall')
-  .patch(
-    authController.protect,
-    authController.restrictTo('admin'),
-    scheduleController.updateScheduleHall
   );
 
 module.exports = router;
