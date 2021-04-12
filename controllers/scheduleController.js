@@ -45,3 +45,31 @@ exports.checkSchedule = catchAsync(async (req, res, next) => {
 
   next();
 });
+
+exports.updateScheduleHall = catchAsync(async (req, res, next) => {
+  const schedule = await Schedule.findById(req.params.id);
+  console.log(Object.keys(schedule.hall));
+  // console.log(req.body.typeOfHall);
+
+  // for (i in schedule.hall) {
+  //   if (i) console.log(i);
+  // }
+
+  // Object.entiers(schedule.hall).forEach((key, val) => {
+  //   console.log(key);
+  //   console.log(val);
+  // });
+
+  for (const [key, value] of Object.entries(schedule.hall)) {
+    console.log(`${key}: ${value}`);
+  }
+
+  // console.log(arr);
+
+  const newHall = res.status(200).json({
+    status: 'success',
+    data: {
+      data: doc
+    }
+  });
+});

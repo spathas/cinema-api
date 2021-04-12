@@ -18,12 +18,6 @@ const scheduleSchema = new mongoose.Schema(
   }
 );
 
-// scheduleSchema.virtual('screeningEnd').get(function() {
-//   const end = new Date(this.screeningStart);
-//   end.setTime(end.getTime() + 1000 * 60 * this.movie.duration);
-//   return end;
-// });
-
 scheduleSchema.pre('save', async function(next) {
   this.movie = await Movie.findById(this.movie);
   this.hall = await Hall.findById(this.hall);
