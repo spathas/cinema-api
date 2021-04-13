@@ -12,7 +12,10 @@ const bookingSchema = new mongoose.Schema(
       ref: 'User',
       required: [true, 'Booking must belong to a User!']
     },
-    seat: [String],
+    seat: {
+      type: [String],
+      required: [true, 'Booking must have an array of seats.']
+    },
     createdAt: {
       type: Date,
       default: Date.now()
@@ -24,14 +27,12 @@ const bookingSchema = new mongoose.Schema(
   }
 );
 
-// bookingSchema.index({ schedule: 1, user: 1 }, { unique: true });
+bookingSchema.index({ schedule: 1, user: 1 }, { unique: true });
 
 bookingSchema.pre(/^find/, function(next) {
   this.populate('user').populate('schedule');
   next();
 });
-
-// Update schedule hall quantity after creation of new booking.
 
 const Booking = mongoose.model('Booking', bookingSchema);
 

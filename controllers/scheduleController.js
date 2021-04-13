@@ -47,14 +47,13 @@ exports.checkSchedule = catchAsync(async (req, res, next) => {
 });
 
 exports.updateReqBodyForNestedObjs = catchAsync(async (req, res, next) => {
-  if (req.body.hall) {
+  if (req.body.hall || req.body.movie) {
     const schedule = await Schedule.findById(req.params.id);
-    req.body.hall = { ...schedule.hall, ...req.body.hall };
-  }
 
-  if (req.body.movie) {
-    const schedule = await Schedule.findById(req.params.id);
-    req.body.movie = { ...schedule.movie, ...req.body.movie };
+    if (req.body.hall) req.body.hall = { ...schedule.hall, ...req.body.hall };
+
+    if (req.body.movie)
+      req.body.movie = { ...schedule.movie, ...req.body.movie };
   }
   next();
 });
