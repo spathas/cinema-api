@@ -2,8 +2,12 @@ const express = require('express');
 const scheduleController = require('../controllers/scheduleController');
 const authController = require('../controllers/authController');
 
+const bookingRouter = require('./bookingRoutes');
+
 //Route
 const router = express.Router();
+
+router.use('/:scheduleId/bookings', bookingRouter);
 
 router
   .route('/')

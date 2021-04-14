@@ -19,7 +19,6 @@ router
   .route('/:id')
   .get(reviewController.getReview)
   .post(
-    authController.protect,
     authController.restrictTo('user'),
     reviewController.setTourUserIds,
     reviewController.createReview

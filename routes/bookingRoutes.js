@@ -1,21 +1,27 @@
 const express = require('express');
 const bookingController = require('../controllers/bookingController');
-// const authController = require('../controllers/authController');
+const authController = require('../controllers/authController');
 
 // Route
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
-// router.use(authController.protect);
+router.use(authController.protect);
+
+router
+  .route('/me')
+  .get(
+    authController.restrictTo('user'),
+    bookingController.getAllBookingsByUser
+  );
 
 router
   .route('/')
-  .get(bookingController.getAllBookings)
+  .get(authController.restrictTo('admin'), bookingController.getAllBookings)
   .post(
+    bookingController.setScheduleUserIds,
     bookingController.chechSeatAvailability,
     bookingController.createBooking
   );
-
-// router.use(authController.restrictTo('Booking'));
 
 router
   .route('/:id')
