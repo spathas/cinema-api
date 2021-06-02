@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
@@ -16,6 +17,10 @@ const scheduleRouter = require('./routes/scheduleRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
 
 const app = express();
+
+// Setup pug engine
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
 
 // 1) GLOBAL MIDDLEWARE
 // Set security HTTP headers
@@ -36,6 +41,7 @@ app.use('/api', limiter);
 
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Data sanitization against NoSQL query injection
 app.use(mongoSanitize());
@@ -56,6 +62,10 @@ app.use((req, res, next) => {
 });
 
 // 3) ROUTES
+app.get('/', (req, res) => {
+  res.status(200).render('main');
+});
+
 app.use('/api/v1/movies', movieRouter);
 app.use('/api/v1/schedules', scheduleRouter);
 app.use('/api/v1/halls', hallRouter);
