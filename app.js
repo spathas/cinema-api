@@ -15,6 +15,7 @@ const hallRouter = require('./routes/hallRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const scheduleRouter = require('./routes/scheduleRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
+const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
 
@@ -62,16 +63,14 @@ app.use((req, res, next) => {
 });
 
 // 3) ROUTES
-app.get('/', (req, res) => {
-  res.status(200).render('main');
-});
-
 app.use('/api/v1/movies', movieRouter);
 app.use('/api/v1/schedules', scheduleRouter);
 app.use('/api/v1/halls', hallRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
 app.use('/api/v1/bookings', bookingRouter);
+
+app.use('/', viewRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

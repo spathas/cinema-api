@@ -1,108 +1,40 @@
 doctype  html 
 html 
     head
-        meta(charset='UTF-8')
-        link(rel='stylesheet' href='css/style.css')
-        link(rel='shortcut icon', type='image/png' href='img/favicon.png')
-        link(rel="preconnect" href="https://fonts.gstatic.com")
-        link(href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet")
-        title Athens Cinemas 
+        block head
+            meta(charset='UTF-8')
+            link(rel='stylesheet' href='/css/style.css')
+            link(rel='shortcut icon', type='/image/png' href='/img/favicon.png')
+            link(rel="preconnect" href="https://fonts.gstatic.com")
+            link(href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet")
+            script(src='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js')
+            link(href='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet')
+            title= title
 
     body 
-        header.header
-            h1.header__title Athens Cinemas
 
-        .main-menu 
-            a.main-menu__item(href="#") Movies
-            a.main-menu__item(href="#") Halls
-            a.main-menu__item(href="#") Details
-            a.main-menu__item(href="#") Map 
-            a.auth-btn.main-menu__item(href="#popup") Login/Register
+        block header
+            header.header
+                a.header__title(href='/')= title
 
-        include _seperator 
+        block content
 
-        section.movies-boxes
-            .movie-box
-                img.movie-box__image(src="/img/FirstMan.png" alt="First man")
-                a.movie-box__btn(href="#") BOOK NOW
-                    
-            .movie-box
-                img.movie-box__image(src="/img/FirstMan.png" alt="First man")
-                a.movie-box__btn(href="#") BOOK NOW
-                    
-            .movie-box
-                img.movie-box__image(src="/img/FirstMan.png" alt="First man")
-                a.movie-box__btn(href="#") BOOK NOW
-                    
-            .movie-box
-                img.movie-box__image(src="/img/FirstMan.png" alt="First man")
-                a.movie-box__btn(href="#") BOOK NOW
-                    
+            include _mainMenu
 
-        include _seperator 
+            include _seperator 
 
-        section.details
-            .details__content
-                h2 ABOUT CINEMA
-                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet reiciendis, quasi, qui nobis dignissimos fuga id reprehenderit doloremque sunt eos dolore dolores sapiente ipsum doloribus nesciunt quam quod, sint fugit? 
-            .details__imgs
-                img.details__img.details__img--1(src="/img/detail1.jpg" alt="detail image")
-                img.details__img.details__img--2(src="/img/detail2.jpg" alt="detail image")
-                img.details__img.details__img--3(src="/img/detail3.jpg" alt="detail image")
+            include _movieBoxes
+                        
+            include _seperator 
 
-        section.map 
+            include _about
 
-        footer.footer
-            h1.footer__title ATHENS CINEMAS
-            .footer__menu
-                h2.footer__menu__title MENU
-                a.footer__menu__item(href="#") Movies
-                a.footer__menu__item(href="#") Halls
-                a.footer__menu__item(href="#") Details
-                a.footer__menu__item(href="#") Map 
-            .footer__details
-                .footer__details-text 
-                    p Details 
-                    p Phone: 210 1212122
-                    p Address: Somewhere 2, Athens
-                    p Postal: 52489
-                .footer__copyright
-                    p Copyright Spathas C.® 2021
-            .footer__working-time
-                h2.working-time__title Working Time
-                .working-time__days 
-                    p Monday 
-                    p Thursday
-                    p Wednesday
-                    p Thursday
-                    p Friday
-                    p Saturday
-                    p Sunday
-                .working-time__hours 
-                    p Close
-                    p 17:00 - 24:00
-                    p 17:00 - 24:00
-                    p 17:00 - 24:00
-                    p 17:00 - 2:00
-                    p 17:00 - 2:00
-                    p 17:00 - 24:00
+            section.map 
 
-        div.popup(id="popup")
-            .popup-content
-                .front
-                    a(href="#header" class="popup-close") &times
-                    .booking-form
-                        form.form(action="#")
-                            h3.heading-tertiary.utility-margin-bottom-Small this is a heading
-                            .form-group
-                                input(type="email" class="form-input" id="email" placeholder="Email Address" required)
-                                label(for="Email" class="form-label") Enter your email.
+        include _footer
 
-                            .form-group
-                                input(type="password" class="form-input" id="name" placeholder="Password" required)
-                                label(for="Password" class="form-label") Enter your password.
+        include popups/_loginForm
 
-                            .form-group
-                                button.form-button Log in
-                                a.form-button.form-anchor(href="#") Register
-                            </div>
+        include popups/_registerForm
+
+        include popups/_bookingForm

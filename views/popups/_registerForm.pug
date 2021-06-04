@@ -1,0 +1,22 @@
+.register(id="register")
+    .register-content
+        .front
+            a.register-close(href="#header") &times;
+            .booking-form
+                form.form(action="#header")
+                    h3.heading-tertiary.utility-margin-bottom-Small Registeration
+                    .form-group
+                        input(type="text" class="form-input" id="name" placeholder="Full name" required)
+                        label(for="name" class="form-label") Enter your full name.
+                    .form-group
+                        input(type="email" class="form-input" id="email" placeholder="Email Address" required)
+                        label(for="Email" class="form-label") Enter your email.
+                    .form-group
+                        input(type="password" class="form-input" id="password" placeholder="Password" required)
+                        label(for="Password" class="form-label") Enter your password.
+                    .form-group
+                        input(type="password" class="form-input" id="password2" placeholder="Confirm-Password" required)
+                        label(for="Password2" class="form-label") Confirm your password
+                    .form-group
+                        button.form-button Confirm
+                        a.form-button.form-anchor(href="#popup") Log in

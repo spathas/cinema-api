@@ -3,6 +3,7 @@
   --white: #ffffff;
 }
 
+/* GLOBAL STYLE */
 * {
   margin: 0;
   padding: 0;
@@ -48,8 +49,10 @@ p {
   font-size: 2rem;
 }
 
+/* SEPERATOR */
 .seperator {
-  position: relative;
+  height: 3px;
+  padding: 3rem;
 }
 
 .seperator__bar {
@@ -57,10 +60,11 @@ p {
   background-color: var(--color-primary);
 }
 
+/* HEADER */
 .header {
   position: relative;
   width: 100%;
-  height: 70vh;
+  height: 20vh;
 
   overflow: hidden;
   background-image: url('../img/bannerPic.jpg');
@@ -76,7 +80,9 @@ p {
   font-size: 10rem;
 }
 
+/* MAIN MENU */
 .main-menu {
+  height: 30vh;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
@@ -89,16 +95,18 @@ p {
 .main-menu__item {
   flex-basis: 15%;
 
-  color: black;
+  color: var(--color-primary);
   font-size: 5rem;
 }
 
 .auth-btn {
-  color: black;
+  color: var(--color-primary);
   font-size: 5rem;
 }
 
+/* MOVIE CARDS */
 .movies-boxes {
+  height: 70vh;
   display: flex;
   justify-items: center;
   flex-wrap: nowrap;
@@ -130,6 +138,7 @@ p {
   background-color: var(--color-primary);
 }
 
+/* ABOUT CINEMA */
 .details {
   display: flex;
 
@@ -193,6 +202,7 @@ p {
   z-index: 20;
 }
 
+/* MAP SECTION */
 .map {
   /* Overwrite section style */
   width: 100%;
@@ -202,6 +212,7 @@ p {
   background-color: darkgray;
 }
 
+/* FOOTER */
 .footer {
   height: 50vh;
   display: grid;
@@ -215,6 +226,11 @@ p {
 .footer__title {
   grid-column: 1 / 4;
   grid-row: 1 / 2;
+
+  font-size: 5rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: white;
 
   text-decoration: underline;
   text-align: center;
@@ -299,6 +315,8 @@ p {
 
   text-align: center;
 }
+
+/* POPUP CARDS */
 .popup,
 .register {
   width: 100%;
@@ -451,4 +469,40 @@ p {
 .popup-close:hover,
 .register-close:hover {
   color: tomato;
+}
+
+/* MOVIE PAGE */
+
+/* HEADER */
+.header-movie {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-primary);
+
+  padding: 0.5rem 2rem;
+}
+
+.header-movie h1 {
+  color: white;
+}
+
+.header-movie__btn {
+  width: 20rem;
+  background-color: white;
+  -webkit-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10rem;
+  border: none;
+  cursor: pointer;
+}
+
+.header-movie__btn:active {
+  -webkit-transform: translateY(1px);
+  transform: translateY(1px);
+  -webkit-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
+  outline: none;
 }
