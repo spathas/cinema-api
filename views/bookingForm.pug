@@ -1,0 +1,15 @@
+extends movie 
+
+block content
+    .booking-movie 
+        h1.booking-movie__title= movie.name
+        iframe.movie-details__trailer(src= movie.trailer  width="100%" height="500" style="border:none;")
+        .booking-movie__description
+            h3.booking-movie__description--title Description:
+            p.booking-movie__description--paragraph= movie.description
+    .booking-app 
+        each schedule in schedules
+            -var date = schedule.screeningStart
+            p= date
+
+

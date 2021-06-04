@@ -1,15 +1,14 @@
 doctype  html 
 html 
     head
-        block head
-            meta(charset='UTF-8')
-            link(rel='stylesheet' href='/css/style.css')
-            link(rel='shortcut icon', type='/image/png' href='/img/favicon.png')
-            link(rel="preconnect" href="https://fonts.gstatic.com")
-            link(href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet")
-            script(src='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js')
-            link(href='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet')
-            title= title
+        meta(charset='UTF-8')
+        link(rel='stylesheet' href='/css/style.css')
+        link(rel='shortcut icon', type='/image/png' href='/img/favicon.png')
+        link(rel="preconnect" href="https://fonts.gstatic.com")
+        link(href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet")
+        script(src='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js')
+        link(href='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet')
+        title= title
 
     body 
 
@@ -29,12 +28,8 @@ html
 
             include _about
 
-            section.map 
-
         include _footer
 
-        include popups/_loginForm
+        script(src= 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js')
+        script(src='/js/login.js')
 
-        include popups/_registerForm
-
-        include popups/_bookingForm

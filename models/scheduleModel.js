@@ -11,7 +11,8 @@ const scheduleSchema = new mongoose.Schema(
     },
     screeningEnd: Date,
     movie: {
-      type: Object,
+      type: mongoose.Schema.ObjectId,
+      ref: 'Movie',
       required: [true, 'Schedule must belong to a movie']
     },
     hall: {
@@ -24,6 +25,7 @@ const scheduleSchema = new mongoose.Schema(
     toObject: { virtuals: true }
   }
 );
+
 // Create nested objects of movie and hall.
 scheduleSchema.pre('save', async function(next) {
   this.movie = await Movie.findById(this.movie);

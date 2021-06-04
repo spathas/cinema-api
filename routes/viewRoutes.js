@@ -7,4 +7,8 @@ router.get('/', viewController.getOverview);
 
 router.get('/movie/:id', viewController.getMovie);
 
+router.get('/schedule/:id', viewController.getSchedules);
+
+router.get('/login', viewController.getLoginForm);
+
 module.exports = router;

@@ -1,29 +1,28 @@
 extends main
 
-mixin overviewBox(label, text, icon)
-  .overview-box__detail
-    svg.overview-box__icon
-      use(xlink:href=`/img/icons.svg#icon-${icon}`)
-    span.overview-box__label= label
-    span.overview-box__text= text
-
 block header
     .header-movie
-        h1= title
+        a.footer__title(href='/')= title
         button.header-movie__btn(action="/") Login/Logout
 
 block content
     section.movie-details 
-        
-        p.movie-details__about= movie.description
-        .movie-details__directors
-            each director in movie.director 
-            p= director
-        //- .movie-details__writes
-        //-     each writer in movie.writer 
-        //-     p= writer
-
-        .movie-details__img
-    section.movie-reviews 
+        img.movie-details__img(src=`/img/${movie.name}.png` alt= movie.name)
+        h2.movie-details__h2 #[strong Description:]
+        p.movie-details__description= movie.description
+        p.movie-details__year= `Year: ${movie.year}`
+        p.movie-details__duration= `Duration: ${movie.year}`
+        p.movie.category= `Category: ${movie.category}`
+        p.movie-details__rating= `Rating: ${movie.ratingsAverage}`
+        a.movie-details__btn(href='/') Book Now
+        h2.movie-details__h2 #[strong Story:]
+        p.movie-details__story= movie.story
+        h2.movie-details__h2.movie-details__direcrots-title Directors
+        iframe.movie-details__trailer(src= movie.trailer  width="100%" height="500" style="border:none;")
+        .movie-details__directors-writers
+            each director, i in movie.director
+              p=`Director ${i+1}: ${director}`
+            each writer, i in movie.writers 
+              p= `Write ${i+1}: ${writer}`
 
     
