@@ -1,8 +1,8 @@
 {
-  "name": "cinemaexam",
+  "name": "cinema-api",
   "version": "1.0.0",
   "description": "cinema booking system",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/spathas/cinemaExam.git"
+    "url": "git+https://github.com/spathas/cinema-api.git"
   },
   "author": "cspathas",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/spathas/cinemaExam/issues"
+    "url": "https://github.com/spathas/cinema-api/issues"
   },
-  "homepage": "https://github.com/spathas/cinemaExam#readme",
+  "homepage": "https://github.com/spathas/cinema-api#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",
@@ -42,8 +42,8 @@
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.0",
+    "eslint": "^8.0.1",
+    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
