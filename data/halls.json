@@ -1,42 +1,340 @@
 [
-  {
-    "_id": "6041ec99b1e4be12e0023c21",
-    "typeOfHall": "classic",
-    "number": 1,
-    "price": 10,
-    "seatsQuantity": 30,
-    "__v": 0
-  },
-  {
-    "_id": "6041ec99b1e4be12e0023c22",
-    "typeOfHall": "classic",
-    "number": 2,
-    "price": 10,
-    "seatsQuantity": 40,
-    "__v": 0
-  },
-  {
-    "_id": "6041ec99b1e4be12e0023c24",
-    "typeOfHall": "summer",
-    "number": 4,
-    "price": 15,
-    "seatsQuantity": 40,
-    "__v": 0
-  },
-  {
-    "_id": "6041ec99b1e4be12e0023c25",
-    "typeOfHall": "kids",
-    "number": 5,
-    "price": 8,
-    "seatsQuantity": 40,
-    "__v": 0
-  },
-  {
-    "_id": "6041ec99b1e4be12e0023c23",
-    "typeOfHall": "gold",
-    "number": 3,
-    "price": 20,
-    "seatsQuantity": 10,
-    "__v": 0
-  }
+    {
+        "_id": "6041ec99b1e4be12e0023c21",
+        "typeOfHall": "classic",
+        "number": 1,
+        "price": 10,
+        "seatsSchema": [
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "empty"
+            ]
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "6041ec99b1e4be12e0023c22",
+        "typeOfHall": "classic",
+        "number": 2,
+        "price": 10,
+        "seatsSchema": [
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "empty",
+                "empty",
+                "empty",
+                "empty",
+                "empty",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "empty",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "empty",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "empty",
+                "empty"
+            ]
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "6041ec99b1e4be12e0023c24",
+        "typeOfHall": "summer",
+        "number": 4,
+        "price": 15,
+        "seatsSchema": [
+            [
+                "open",
+                "open",
+                "open",
+                "empty",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "empty",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "empty",
+                "empty"
+            ],
+            [
+                "empty",
+                "empty",
+                "empty",
+                "empty",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "empty",
+                "empty",
+                "empty",
+                "empty",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "empty"
+            ]
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "6041ec99b1e4be12e0023c25",
+        "typeOfHall": "kids",
+        "number": 5,
+        "price": 8,
+        "seatsSchema": [
+            [
+                "open",
+                "open",
+                "open",
+                "empty",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "empty",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "empty",
+                "empty"
+            ],
+            [
+                "empty",
+                "empty",
+                "empty",
+                "empty",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "empty",
+                "empty",
+                "empty",
+                "empty",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "empty",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "empty",
+                "empty"
+            ]
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "6041ec99b1e4be12e0023c23",
+        "typeOfHall": "gold",
+        "number": 3,
+        "price": 20,
+        "seatsSchema": [
+            [
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "empty",
+                "empty",
+                "empty",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open"
+            ],
+            [
+                "empty",
+                "empty",
+                "empty",
+                "empty"
+            ],
+            [
+                "open",
+                "open",
+                "open",
+                "open"
+            ]
+        ],
+        "__v": 0
+    }
 ]

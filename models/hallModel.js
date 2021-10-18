@@ -11,9 +11,10 @@ const hallSchema = new mongoose.Schema(
       type: Number,
       required: [true, 'A hall must have a price number']
     },
-    seatsQuantity: {
-      type: Number,
-      required: [true, 'You have to set the quantity of the hall.']
+    seatsSchema: {
+      type: [[String]],
+      enum: ['open', 'closed', 'empty', 'disabled'],
+      required: [true, 'A hall must have schema of seats']
     },
     typeOfHall: {
       type: String,
@@ -25,6 +26,14 @@ const hallSchema = new mongoose.Schema(
     toObject: { virtuals: true }
   }
 );
+
+hallSchema.virtual('seatsQuantity').get(function() {
+  let seatsQuantity;
+  for (let i = 0; i < this.seatsColumns.length; i++) {
+    seatsQuantity += array[i];
+  }
+  return seatsQuantity;
+});
 
 const Hall = mongoose.model('Hall', hallSchema);
 

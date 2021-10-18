@@ -1,0 +1,99 @@
+[
+    {
+        "_id":"60761116fb2ef20e3f9eedde",
+        "screeningStart": {
+            "$date": "2022-12-17T03:00:00.000Z"
+        },
+        "movie": "6041ec97b1e4be12e0023c1e",
+        "hall": {
+            "typeOfHall": "classic",
+            "_id": "6041ec99b1e4be12e0023c22",
+            "number": 2,
+            "price": 10,
+            "seatsColumns": [6,6,6,6,4,4,4],
+            "__v": 0
+        },
+        "__v": 0
+    },
+    {
+        "_id":"6147488be4d8d525a06685ee",
+        "screeningStart": {
+            "$date": "2022-12-17T06:00:00.000Z"
+        },
+        "movie":"6041ec97b1e4be12e0023c1e",
+        "hall": {
+            "typeOfHall": "classic",
+            "_id": "6041ec99b1e4be12e0023c22",
+            "number": 2,
+            "price": 10,
+            "seatsColumns": [6,6,6,6,4,4,4],
+            "__v": 0
+        },
+        "__v": 0
+    },
+    {
+        "_id":"614749bee4d8d525a06685f0",
+        "screeningStart": {
+            "$date": "2022-12-17T06:00:00.000Z"
+        },
+        "movie":"6041ec97b1e4be12e0023c1e",
+        "hall": {
+            "typeOfHall": "kids",
+            "_id": "6041ec99b1e4be12e0023c25",
+            "number": 5,
+            "price": 8,
+            "seatsColumns": [3,3,3,5,5,3,3],
+            "__v": 0
+        },
+        "__v": 0
+    },
+    {
+        "_id":"614749c5e4d8d525a06685f1",
+        "screeningStart": {
+            "$date": "2022-12-17T03:00:00.000Z"
+        },
+        "movie":"6041ec97b1e4be12e0023c1e",
+        "hall": {
+            "typeOfHall": "kids",
+            "_id": "6041ec99b1e4be12e0023c25",
+            "number": 5,
+            "price": 8,
+            "seatsColumns": [3,3,3,5,5,3,3],
+            "__v": 0
+        },
+        "__v": 0
+    },
+    {
+        "_id":"614789512ff22144a03939f8",
+        "screeningStart": {
+            "$date": "2022-12-17T12:00:00.000Z"
+        },
+        "movie":"6041ec97b1e4be12e0023c1f",
+        "hall": {
+            "typeOfHall": "kids",
+            "_id": "6041ec99b1e4be12e0023c25",
+            "number": 5,
+            "price": 8,
+            "seatsColumns": [3,3,3,5,5,3,3],
+            "__v": 0
+        },
+        "__v": 0
+    },
+    {
+        "_id":"614749d5e4d8d525a06685f2",
+        "screeningStart": {
+            "$date": "2022-12-17T09:00:00.000Z"
+        },
+        "movie":"6041ec97b1e4be12e0023c1e",
+        "hall": {
+            "typeOfHall": "kids",
+            "_id": "6041ec99b1e4be12e0023c25",
+            "number": 5,
+            "price": 8,
+            "seatsColumns": [3,3,3,5,5,3,3],
+            "__v": 0
+        },
+        "__v": 0
+    }
+]
+
