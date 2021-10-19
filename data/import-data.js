@@ -45,7 +45,7 @@ const importData = async () => {
     await Hall.create(halls);
     await User.create(users, { validateBeforeSave: false });
     await Review.create(reviews);
-    await Schedule.create(schedules, { validateBeforeSave: false });
+    await Schedule.create(schedules);
     await Booking.create(bookings, { validateBeforeSave: false });
     console.log('Data successfully loaded!');
   } catch (err) {

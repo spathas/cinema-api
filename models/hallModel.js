@@ -28,9 +28,11 @@ const hallSchema = new mongoose.Schema(
 );
 
 hallSchema.virtual('seatsQuantity').get(function() {
-  let seatsQuantity;
-  for (let i = 0; i < this.seatsColumns.length; i++) {
-    seatsQuantity += array[i];
+  let seatsQuantity = 0;
+  for (let i = 0; i < this.seatsSchema.length; i++) {
+    for (let j = 0; j < this.seatsSchema[i].length; j++) {
+      if (this.seatsSchema[i][j] === 'open') ++seatsQuantity;
+    }
   }
   return seatsQuantity;
 });

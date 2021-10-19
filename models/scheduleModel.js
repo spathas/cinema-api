@@ -26,6 +26,16 @@ const scheduleSchema = new mongoose.Schema(
   }
 );
 
+scheduleSchema.virtual('hall.seatsQuantity').get(function() {
+  let seatsQuantity = 0;
+  for (let i = 0; i < this.hall.seatsSchema.length; i++) {
+    for (let j = 0; j < this.hall.seatsSchema[i].length; j++) {
+      if (this.hall.seatsSchema[i][j] === 'open') ++seatsQuantity;
+    }
+  }
+  return seatsQuantity;
+});
+
 // Create nested objects of movie and hall.
 scheduleSchema.pre('save', async function(next) {
   this.movie = await Movie.findById(this.movie);
