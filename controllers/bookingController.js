@@ -21,15 +21,15 @@ exports.setScheduleUserIds = (req, res, next) => {
 exports.chechSeatAvailability = catchAsync(async (req, res, next) => {
   const schedule = await Schedule.findById(req.body.schedule);
 
-  const queryParams = req.body.seat.map(e => {
+  const queryParams = req.body.seats.map(e => {
     if (schedule.hall.seatsQuantity)
       return next(
         new AppError(
-          "You can't choose seat with number which is exceeds the seat quantity limit.",
+          "You can't choose seats with number which is exceeds the seats quantity limit.",
           500
         )
       );
-    return { seat: e };
+    return { seats: e };
   });
 
   const query = await Booking.find({ $or: queryParams });

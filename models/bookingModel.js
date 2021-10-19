@@ -12,7 +12,7 @@ const bookingSchema = new mongoose.Schema(
       ref: 'User',
       required: [true, 'Booking must belong to a User!']
     },
-    seat: {
+    seats: {
       type: [String],
       required: [true, 'Booking must have an array of seats.']
     },
