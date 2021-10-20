@@ -1,5 +1,6 @@
 const Booking = require('../models/bookingModel');
 const Schedule = require('../models/scheduleModel');
+const User = require('../models/userModel');
 const factory = require('./handleFactory');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
@@ -10,29 +11,34 @@ exports.getBooking = factory.getOne(Booking);
 exports.updateBooking = factory.updateOne(Booking);
 exports.deleteBooking = factory.deleteOne(Booking);
 
-exports.setScheduleUserIds = (req, res, next) => {
+exports.setScheduleUserIds = catchAsync(async (req, res, next) => {
   // Allow nested routes
   if (!req.body.schedule) req.body.schedule = req.params.scheduleId;
-  if (req.user.role === 'user') req.body.user = req.user.id;
+  // if (req.user.role === 'user') req.body.user = req.user.id
   next();
-};
+});
 
 // Block bookings with the same seats references or exceed the limit of hall quantity.
 exports.chechSeatAvailability = catchAsync(async (req, res, next) => {
   const schedule = await Schedule.findById(req.body.schedule);
+  const scheduleObj = JSON.parse(JSON.stringify(schedule));
 
-  const queryParams = req.body.seats.map(e => {
-    if (schedule.hall.seatsQuantity)
-      return next(
-        new AppError(
-          "You can't choose seats with number which is exceeds the seats quantity limit.",
-          500
-        )
-      );
-    return { seats: e };
+  if (req.body.seats.length > scheduleObj.hall.seatsQuantity) {
+    return next(
+      new AppError(
+        'There is not enough seats available for booking. Someone was faster than you. Sorry!',
+        500
+      )
+    );
+  }
+
+  const queryParams = req.body.seats.map(e => ({
+    seats: e
+  }));
+
+  const query = await Booking.find({
+    $or: queryParams
   });
-
-  const query = await Booking.find({ $or: queryParams });
 
   if (query.length === 0) {
     return next();

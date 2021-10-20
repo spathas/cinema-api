@@ -94,13 +94,14 @@ exports.protect = catchAsync(async (req, res, next) => {
     token = req.cookies.jwt;
   }
 
+  if (!token) token = req.body.token;
+
   if (!token) {
     return next(new AppError('Please log in to get access.', 401));
   }
 
   // 2) Verification token.
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-
   // 3) Check if user still exists.
   const currentUser = await User.findById(decoded.id);
 
@@ -201,7 +202,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 exports.updatePassword = catchAsync(async (req, res, next) => {
   // 1) Get user from collection.
   const user = await User.findById(req.user.id).select('+password');
-  // console.log(user);
+
   if (!user) {
     return next(
       new AppError('Can authorize your account. Please log in again.', 404)

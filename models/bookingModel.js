@@ -27,7 +27,7 @@ const bookingSchema = new mongoose.Schema(
   }
 );
 
-bookingSchema.index({ schedule: 1, user: 1 }, { unique: true });
+// bookingSchema.index({ schedule: 1, user: 1 }, { unique: true });
 
 bookingSchema.pre(/^find/, function(next) {
   this.populate('user').populate('schedule');
