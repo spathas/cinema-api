@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Schedule = require('./scheduleModel');
 
 const bookingSchema = new mongoose.Schema(
   {
@@ -28,6 +29,11 @@ const bookingSchema = new mongoose.Schema(
 );
 
 // bookingSchema.index({ schedule: 1, user: 1 }, { unique: true });
+
+bookingSchema.post('save', async function() {
+  // const schedule = await Schedule.findById(this.schedule);
+  console.log(this.schedule);
+});
 
 bookingSchema.pre(/^find/, function(next) {
   this.populate('user').populate('schedule');

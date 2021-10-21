@@ -20,8 +20,17 @@ exports.setScheduleUserIds = catchAsync(async (req, res, next) => {
 
 // Block bookings with the same seats references or exceed the limit of hall quantity.
 exports.chechSeatAvailability = catchAsync(async (req, res, next) => {
-  const schedule = await Schedule.findById(req.body.schedule);
+  const schedule = await Schedule.findByIdAndUpdate(
+    req.body.schedule,
+    req.body.seatsSchema,
+    {
+      new: true,
+      runValidators: true
+    }
+  );
+
   const scheduleObj = JSON.parse(JSON.stringify(schedule));
+  console.log('Schema', schedule.hall.seatsSchema);
 
   if (req.body.seats.length > scheduleObj.hall.seatsQuantity) {
     return next(
