@@ -29,7 +29,7 @@ router
   )
   .patch(
     authController.protect,
-    authController.restrictTo('admin'),
+    // authController.restrictTo('admin'),
     scheduleController.updateReqBodyForNestedObjs,
     scheduleController.updateSchedule
   );
